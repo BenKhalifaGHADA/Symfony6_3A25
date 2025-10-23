@@ -43,6 +43,15 @@ final class AuthorController extends AbstractController
         );
     }
 
+    #[Route('/ShowAllAuthorQB',name:'ShowAllAuthorQB')]
+    public function ShowAllAuthorQB(AuthorRepository $repo){
+       $authors=$repo->showAllQB();
+       return $this->render(
+            'author/showAll.html.twig'
+            ,
+            ['list' => $authors]
+        );
+    }
     #[Route('/addStat', name: 'addStat')]
     public function addStat(ManagerRegistry $doctrine)
     {
@@ -95,4 +104,6 @@ final class AuthorController extends AbstractController
         return $this->render('author/showDetails.html.twig', ['author' => $author]);
     }
 
+
+    
 }
