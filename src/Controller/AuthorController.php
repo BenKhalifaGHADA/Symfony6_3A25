@@ -52,6 +52,16 @@ final class AuthorController extends AbstractController
             ['list' => $authors]
         );
     }
+
+    #[Route("/ShowAllDQL",name:'ShowAllDQL')]
+    public function ShowAllDQL(AuthorRepository $repo){
+       $authors=$repo->ShowAllAuthorsDQL();
+       return $this->render(
+            'author/showAll.html.twig'
+            ,
+            ['list' => $authors]
+        );
+    }
     #[Route('/addStat', name: 'addStat')]
     public function addStat(ManagerRegistry $doctrine)
     {
